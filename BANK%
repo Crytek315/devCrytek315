@@ -1,0 +1,9 @@
+<meta charset="UTF-8">
+<script>
+   var n;
+    var p = parseInt(prompt('Проценты'));
+   var t = prompt('Кол-во лет');
+    for (n = parseInt(prompt('Сумма вклада')); t != 0; (n = n + (n * p/100)) && (t--) ) {
+        alert (n);
+    }
+</script>
