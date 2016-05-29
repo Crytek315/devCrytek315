@@ -1,9 +1,10 @@
-<meta charset="UTF-8">
+<meta charset='utf-8'>
 <script>
-   var n;
-    var p = parseInt(prompt('Проценты'));
-   var t = prompt('Кол-во лет');
-    for (n = parseInt(prompt('Сумма вклада')); t != 0; (n = n + (n * p/100)) && (t--) ) {
-        alert (n);
-    }
+var a = parseInt(prompt('Введите сумму вклада: '));
+var b = parseInt(prompt('Введите процент ставки: % '));
+var c = parseInt(prompt('Введите количество лет: '));
+for (var d=1; d<=c; d++){
+   a=a+a*b/100;
+   alert('Год вложения: '+d+' Размер вклада на текущий год: '+a);
+}
 </script>
