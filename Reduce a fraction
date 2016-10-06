@@ -1,0 +1,18 @@
+<meta charset="UTF-8">
+<script>
+    var num = prompt('Numerator');
+    var den = prompt('Denominator');
+    var n = 0;
+    do {
+        n++;
+    } while (num % n !== 0 && den % n !== 0 && (n < num  || n < den ));
+
+    if (n >= num || n >= den) {
+        alert(num + '/' + den +'You can't reduce a fraction')
+    }
+    else {
+        alert(num + '/' + den + 'You can reduce a fraction');
+    }
+
+
+</script>
