@@ -1,0 +1,76 @@
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    </head>
+    <body>
+        <input type="file" id="file" name="file">
+
+        <script>
+            var textFile;
+            document.getElementById('file').addEventListener(
+                'change',
+                function (event) {
+                    var file = event.target.files[0];
+
+                    var reader = new FileReader();
+                    reader.onload = (function(theFile) {
+                        return function(readEvent) {
+                          
+                         
+                            var content = readEvent.target.result;
+                            var lines = content.split("\n");
+
+                         
+
+                            for (var i = 0; i < lines.length; i++) {
+                                var lineContent = lines[i];
+                                var items = lineContent.split(" ");
+
+                                var pet = items[0];
+                                var vas = items[1];
+                            }
+
+
+
+
+                             var n = 0;
+                             do {
+                                 n++;
+                                 if (n > pet || n > vas) {
+                                     var outputContent = 'You can't reduce this fraction' ;
+                                     break;
+                                 }
+                                 else if(pet % n === 0 && vas % n === 0 && n != 1) {
+                                     var outputContent = 'You can reduce this fraction' ;
+                                     break;
+                                 }
+
+                             } while (n < pet  || n < vas );
+
+                             
+
+
+
+
+                            var outputFile = new Blob([outputContent], {type: 'text/plain'});
+                            if (textFile !== null) { 
+                                window.URL.revokeObjectURL(textFile);
+                            }
+                            textFile = window.URL.createObjectURL(outputFile);
+
+                            var downloadLink = document.createElement("a");
+                            downloadLink.download = 'output.txt';
+                            downloadLink.innerHTML = "Download File";
+                            downloadLink.href = textFile;
+                            document.body.appendChild(downloadLink);
+                            downloadLink.click();
+                        };
+                    })(file);
+                    reader.readAsText(file);
+                },
+                false
+            );
+
+        </script>
+    </body>
+</html>
