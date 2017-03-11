@@ -1,0 +1,41 @@
+
+function setColor (px, r, g, b) {
+px.setGreen(g);
+px.setBlue(b);
+px.setRed(r);
+return px;
+}
+
+function setBorder (img, thick) {
+
+alert("You'll need to write down your color with RGB format");
+
+var colors =
+[prompt("Enter Red value:"),
+prompt("Enter Green value:"),
+prompt("Enter Blue value:")]
+
+
+for (var pixel of img.values()) {
+
+if(pixel.getY() < thick
+|| pixel.getY() > img.getHeight() - thick
+|| pixel.getX() < thick
+|| img.getWidth() - thick < pixel.getX() ) {
+
+pixel = setColor(pixel, colors[0], colors[1], colors[2]);
+}
+
+}
+
+return img;
+}
+
+
+//File must be in the directory
+var imagepath = prompt("Enter name of the file(with extension):")
+var image = new SimpleImage(imagepath);
+
+var thick = prompt("Enter thickness of the border:");
+image = setBorder(image, thick);
+print(image);
